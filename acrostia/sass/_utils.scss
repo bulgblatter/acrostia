@@ -15,3 +15,121 @@
  *      - Font sizes and families.
  *      - Layout and grid sizing.
  ******************************************************************************/
+@import "susy";
+@import "compass";
+
+// Media queries.
+$media-small: 'all and (min-width: 480px) and (max-width: 799px)' !default;
+$media-narrow: 'all and (min-width: 800px) and (max-width: 979px)' !default;
+$media-medium: 'all and (min-width: 980px) and (max-width: 1199px)' !default;
+
+$media-small-up: 'all and (min-width: 480px)' !default;
+$media-narrow-up: 'all and (min-width: 800px)' !default;
+$media-medium-up: 'all and (min-width: 980px)' !default;
+$media-wide-up: 'all and (min-width: 1200px)' !default;
+
+$media-small-down: 'all and (max-width: 480px)' !default;
+$media-narrow-down: 'all and (max-width: 800px)' !default;
+$media-medium-down: 'all and (max-width: 980px)' !default;
+$media-wide-down: 'all and (max-width: 1200px)' !default;
+
+
+// Set consistent vertical and horizontal spacing units.
+$vert-spacing-unit: 1em !default;
+$horz-spacing-unit: 1em !default;
+
+// Define Susy grid variables mobile first.
+$total-columns: 4 !default;
+$column-width: 4em !default;
+$gutter-width: $horz-spacing-unit !default;
+$grid-padding: 5px !default;
+
+$container-style: magic !default;
+$container-width: 1100px !default;
+
+// Susy Media Layouts @see http://susy.oddbird.net/guides/reference/#ref-media-layouts
+$tab: 44em 12 !default; // At 44em use 12 columns.
+$desk: 70em 12 !default; // At 70em use 12 columns.
+
+
+$debug-grid: false !default;
+
+$awesome: icon-lightbulb icon-magic icon-cogs icon-rocket;
+
+/****   Base colors ****/
+$color_backg_1: #b24a50 !default;
+$color_front_1: #c8535a !default;
+$color_backg_2: #665464 !default;
+$color_front_2: #91778e !default;
+$color_backg_3: #81a256 !default;
+$color_front_3: #a1ca6c !default;
+$color_backg_4: #75b4aa !default;
+$color_front_4: #82c8bd !default;
+
+/****   Mixins ****/
+@mixin grid-background {
+  @if $debug-grid == true {
+    @include susy-grid-background;
+  }
+}
+
+%container {
+  @include container;
+  @include grid-background;
+}
+
+@mixin block-columns($columns) {
+  @include span-columns($total-columns / $columns);
+
+  // The last block in a row gets the omega postfix.
+  &:nth-child(#{$columns}n) {
+    @include omega;
+  }
+
+  // The first block after a row clears left.
+  &:first-child, &:nth-child(#{$columns}n+#{$columns+1}) {
+    clear: both;
+  }
+}
+
+@mixin at-media-query($query, $parent: false) {
+  @media #{$query} {
+    @if $parent {
+      #{$parent} {
+        @content;
+      };
+    }
+    @else {
+      @content;
+    }
+  }
+}
+
+@mixin triangle($width, $dir, $color) {
+  @if $dir == up {
+    width: 0;
+    height: 0;
+    border-left: $width/2 solid transparent;
+    border-right: $width/2 solid transparent;
+    border-bottom: $width/2 solid $color;
+  } @else if $dir == down {
+    width: 0;
+    height: 0;
+    border-left: $width/2 solid transparent;
+    border-right: $width/2 solid transparent;
+    border-top: $width/2 solid $color;
+  } @else if $dir == right {
+    width: 0;
+    height: 0;
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-left: $width solid $color;
+  } @else if $dir == left {
+    width: 0;
+    height: 0;
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-right: $width solid $color;
+  }
+}
+ 

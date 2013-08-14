@@ -1,14 +1,146 @@
 /*******************************************************************************
- * _base.scss
+  * _base.scss
+  
+  * Base styles define the default look for HTML and common Drupal elements.
+  *
+  * These rules will generally be made up of element selectors for HTML elements
+  * such as headings, paragraphs and lists. Common Drupal elements such as form
+  * items, collapsible fieldsets and messages should be included in this partial.
+  *
+  * The styleguide module (http://drupal.org/project/styleguide) gives you a good
+  * overview of Drupals common elements for styling. By setting a solid baseline
+  * before adding any more specific customisations you ensure that as any new
+  * features are added they will be correctly styled without any extra work.
+******************************************************************************/
+/* Cyrilic*/
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic); //font-family: 'PT Sans', sans-serif;
+@import url(http://fonts.googleapis.com/css?family=Lobster); //font-family: 'Lobster', cursive;
 
- * Base styles define the default look for HTML and common Drupal elements.
- *
- * These rules will generally be made up of element selectors for HTML elements
- * such as headings, paragraphs and lists. Common Drupal elements such as form
- * items, collapsible fieldsets and messages should be included in this partial.
- *
- * The styleguide module (http://drupal.org/project/styleguide) gives you a good
- * overview of Drupals common elements for styling. By setting a solid baseline
- * before adding any more specific customisations you ensure that as any new
- * features are added they will be correctly styled without any extra work.
- ******************************************************************************/
+/* Non cyrilic*/
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic); //font-family: 'Lato', sans-serif;
+@import url(http://fonts.googleapis.com/css?family=Damion); //font-family: 'Damion', cursive;
+@import "compass/css3";
+
+
+body {font: 1em/1.4em 'Lato', sans-serif;background: url(../images/backgr_page_1.png) top center no-repeat #b24a50;color: #fff;}
+
+
+.site-branding__name {
+  font: 3em/1em 'Damion', cursive;
+  color: white;
+  text-shadow: 0 1px 1px #000;
+  display: block;
+  margin-bottom: 0.2em;
+  &:hover{
+    color: white; 
+    text-decoration: none;
+  }
+}
+
+nav {
+  .menu {
+    margin: 0; padding: 0; 
+    .leaf, li {
+      list-style-image: none; list-style-type: none;
+    }
+    
+    a {
+      color: #fff;
+      display: block;
+      padding: 0.5em;
+      &:hover, &.active {color: #fff;text-decoration: none;background-color: #74c7d5;}
+    }
+  }
+  .selector {
+    display: none;
+  }
+}
+@include at-media-query($media-narrow-down) {
+  nav {
+    overflow: hidden;
+    .selector {
+      display: block;
+      position: relative;
+      width: 100% !important;
+      margin: 10px 0;
+      select{
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+        opacity: 0;
+        height: 40px;
+        option {
+          background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+          -webkit-appearance: none;
+          padding: 10px 40px;
+          border: none;
+          border-bottom: 1px solid $color_front_1;
+          color: #000;
+          border-bottom: 1px solid $color_backg_1;
+        }
+      }
+      span{
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100% !important;
+        background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        color: #000;
+      }
+    }
+    .menu {
+      display: none;
+    }
+  }
+}
+@include at-media-query($media-narrow-up) {
+  nav {
+    .menu {
+      float: right;
+      li {
+        float: left;
+        a {
+          padding: 2em 1.5em 1em;
+          font-size: 1em;
+          @include border-radius(0 0 0.3em 0.3em);
+        }
+      }
+    }
+  }
+  .site-branding__name {
+    padding-top: 0.5em;
+    margin-bottom: 0;
+  }
+}
+
+/*
+  @include at-media-query($media-small) {
+  nav {
+  .menu {
+  float: right;
+  li {
+  float: left;
+  a {
+  padding: 1em 1em 0.5em;
+  font-size: 1em;
+  }
+  }
+  }
+  }
+  }
+*/
+h1, h2, h3 {
+  font-weight: 100;text-transform: uppercase;text-align: center;font-size: 3em;
+  a {
+    color: #fff;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+h2 {font-size: 2em;}
+h3 {font-weight: normal;font-size: 1.5em;}

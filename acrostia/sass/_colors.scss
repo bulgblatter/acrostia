@@ -1,0 +1,99 @@
+.acrostia-2 {
+  background: url(../images/backgr_page_2.png) top center no-repeat $color_backg_2;
+  nav .menu a {
+    &:hover, &.active {color: #fff;text-decoration: none;background-color: $color_front_2;}
+  }
+  .grid-views {
+    .views-row {
+      background-color: $color_front_2;
+    }
+  }
+  .hi-icon {
+    &:hover{
+      color: $color_front_2;
+    }
+  }
+  .view-users {
+    img{
+      border-color: $color_front_2;
+    }
+  }
+  .facebook {
+    background-color: $color_backg_2;
+  }
+  .google-plus {
+    background-color: $color_backg_2;
+  }
+  .twitter {
+    background-color: $color_backg_2;
+  }
+  .linkedin {
+    background-color: $color_backg_2;
+  }
+}
+.acrostia-3 {
+  background: url(../images/backgr_page_3.png) top center no-repeat $color_backg_3;
+  nav .menu a {
+    &:hover, &.active {color: #fff;text-decoration: none;background-color: $color_front_3;}
+  }
+  .grid-views {
+    .views-row {
+      background-color: $color_front_3;
+    }
+  }
+  .hi-icon {
+    &:hover{
+      color: $color_front_3;
+    }
+  }
+  .view-users {
+    img{
+      border-color: $color_front_3;
+    }
+  }
+  .facebook {
+    background-color: $color_backg_3;
+  }
+  .google-plus {
+    background-color: $color_backg_3;
+  }
+  .twitter {
+    background-color: $color_backg_3;
+  }
+  .linkedin {
+    background-color: $color_backg_3;
+  }
+}
+.acrostia-4 {
+  background: url(../images/backgr_page_4.png) top center no-repeat $color_backg_4;
+  nav .menu a {
+    &:hover, &.active {color: #fff;text-decoration: none;background-color: $color_front_4;}
+  }
+  .grid-views {
+    .views-row {
+      background-color: $color_front_4;
+    }
+  }
+  .hi-icon {
+    &:hover{
+      color: $color_front_4;
+    }
+  }
+  .view-users {
+    img{
+      border-color: $color_front_4;
+    }
+  }
+  .facebook {
+    background-color: $color_backg_4;
+  }
+  .google-plus {
+    background-color: $color_backg_4;
+  }
+  .twitter {
+    background-color: $color_backg_4;
+  }
+  .linkedin {
+    background-color: $color_backg_4;
+  }
+}

@@ -1,39 +1,308 @@
 /*******************************************************************************
- * _components.scss
- *
- * Imports more partials that contain full components (modules in SMACSS), their
- * sub-components and modifiers.
- *
- * Components are discrete parts of your page that should sit within the regions
- * of your layouts. You should try to abstract your components as much as
- * possible to promote reuse throughout the theme. Components should be flexible
- * enough to respond to any width and should never rely on context
- * (e.g. .sidebar-first .component) for styling. This allows modules to be
- * placed throughout the theme with no risk of them breaking.
- *
- * If you find you need to change the look of a component depending on it's
- * context you should avoid using context based classes at all costs. Instead it
- * is better to add another "modifier" class to the component to alter the
- * styling. Again, this promotes reuse.
- *
- * Sub-components are the individual parts that make up a component. As a
- * general rule, adding a class to target a sub-component is a much better
- * option than using descendant selectors or element selectors. In many cases
- * sub-components can be made more reusable by making them components in their
- * own right, so they can then be used within other components.
- *
- * Almost everything that doesn't belong in base should be made a component.
- * Here's some common examples throughout Drupal:
- *
- * - Blocks
- * - Content Types - For example, you may have a generic node component that
- *      contains sub-components for the submitted by line and links. Specific
- *      components can then be created for each content type to style the
- *      specifics of each. Finally, by using entity view modes you can easily
- *      apply modifications based on the .node-[view-mode] classes.
- * - Forms - For instance the log in form.
- * - Views - Each views output style could be made into a component, the content
- *       of each row should be provided my a view mode styled by it's component
- *       CSS. Exposed filter forms, views pagers and other views elements are
- *       also good candidates for components.
- ******************************************************************************/
+  * _components.scss
+  *
+  * Imports more partials that contain full components (modules in SMACSS), their
+  * sub-components and modifiers.
+  *
+  * Components are discrete parts of your page that should sit within the regions
+  * of your layouts. You should try to abstract your components as much as
+  * possible to promote reuse throughout the theme. Components should be flexible
+  * enough to respond to any width and should never rely on context
+  * (e.g. .sidebar-first .component) for styling. This allows modules to be
+  * placed throughout the theme with no risk of them breaking.
+  *
+  * If you find you need to change the look of a component depending on it's
+  * context you should avoid using context based classes at all costs. Instead it
+  * is better to add another "modifier" class to the component to alter the
+  * styling. Again, this promotes reuse.
+  *
+  * Sub-components are the individual parts that make up a component. As a
+  * general rule, adding a class to target a sub-component is a much better
+  * option than using descendant selectors or element selectors. In many cases
+  * sub-components can be made more reusable by making them components in their
+  * own right, so they can then be used within other components.
+  *
+  * Almost everything that doesn't belong in base should be made a component.
+  * Here's some common examples throughout Drupal:
+  *
+  * - Blocks
+  * - Content Types - For example, you may have a generic node component that
+  *      contains sub-components for the submitted by line and links. Specific
+  *      components can then be created for each content type to style the
+  *      specifics of each. Finally, by using entity view modes you can easily
+  *      apply modifications based on the .node-[view-mode] classes.
+  * - Forms - For instance the log in form.
+  * - Views - Each views output style could be made into a component, the content
+  *       of each row should be provided my a view mode styled by it's component
+  *       CSS. Exposed filter forms, views pagers and other views elements are
+  *       also good candidates for components.
+******************************************************************************/
+
+/**   Image listing  **/
+.image-views {
+  .views-row {
+    margin-bottom: $horz-spacing-unit;
+  }
+}
+
+/** Views with awesome font icons **/
+.awesome-views {
+  .views-row {
+    background-color: $color_front_1;
+  }
+}
+.awesome-icon-plus {
+  position: relative;
+  height: 210px;
+  .icon-plus {
+    display: none;
+    @include border-radius(50%); 
+    border: 0.1em solid #fff;
+    padding: 0.2em 0.3em;
+    font-size: 2em;
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    margin-left: -0.8em;
+    @include opacity(0.7);
+  }
+  &:hover {
+    /*    .icon-plus {
+      display: block;
+    }*/
+    a:after {
+      content: '';
+      background: url(../images/backgr_image_hover.png) center center transparent no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.gallery-views .views-row{
+  height: 250px;
+  position: relative;
+  @include border-radius(4px); 
+  overflow: hidden;
+  position: relative;
+  .views-field {
+    padding: 0 !important;
+  }
+  
+  img {
+    width: 100%;
+    min-height: 200px;
+  }
+  .views-field-title {
+    background-color: #eeeeee;
+    text-align: center;
+    padding: 10px 0 !important;
+    position: absolute;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    a {
+      color: #727272;
+      text-transform: uppercase;
+    }
+    &:before {
+      @include triangle(2em, up, #eeeeee);
+      content: '';
+      left: 50%;
+      margin: 0 0 0 -1em;
+      position: absolute;
+      top: -16px;
+    }
+  }
+}
+
+.grid-views {
+  .views-row {
+    margin-bottom: $vert-spacing-unit;
+    @include opacity(0.8);
+    .views-field {
+      padding: 0 $horz-spacing-unit;
+    }
+  }
+}
+.centered{
+  text-align: center;
+}
+.view-users {
+  img{
+    border: 0.4em solid $color_front_1;
+    @include border-radius(50%); 
+    margin: ($vert-spacing-unit * 2) 0 $vert-spacing-unit -0.4em;
+  }
+  .views-field-name {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    @include opacity(0.7);
+  }
+  .views-field-field-position {
+    margin-bottom: $vert-spacing-unit * 2;
+  }
+  .views-row {
+    &:hover {
+      .views-field-name {
+        @include opacity(1);
+      }
+      img {
+        border-color: #fff;
+      }
+    }
+  }
+}
+.social-icon{
+  @include border-radius(50%); 
+  display: inline-block;
+  height: 1.2em;
+  width: 1.2em;
+  padding: 0.5em;
+  background-color: $color_front_1;
+  color: #fff;
+  margin-bottom: ($vert-spacing-unit * 2);
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+.facebook {
+  &:hover {
+    background-color: #4f689e !important;
+  }
+}
+.google-plus {
+  &:hover {
+    background-color: #df5c64 !important;
+  }
+}
+.linkedin {
+  &:hover {
+    background-color: #3e61af !important;
+  }
+}
+.twitter {
+  &:hover {
+    background-color: #74c7d5 !important;
+  }
+}
+
+@include at-media-query($media-small) {
+  .grid-views {
+    .views-row {
+      @include block-columns(2);
+    }
+  }
+}
+@include at-media-query($media-narrow-up) {
+  .grid-views {
+    .views-row {
+      @include block-columns(4);
+    }
+  }
+}
+
+.hi-icon {
+  display: block;
+  font-size: 0px;
+  cursor: pointer;
+  margin: 40px auto 30px;
+  width: 90px;
+  height: 90px;
+  @include border-radius(50%);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+  -webkit-transition: background 0.2s, color 0.2s;
+  -moz-transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
+  &:after{
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include border-radius(50%);
+    content: '';
+    -webkit-box-sizing: content-box; 
+    -moz-box-sizing: content-box; 
+    box-sizing: content-box;
+    top: -7px;
+    left: -7px;
+    padding: 7px;
+    box-shadow: 0 0 0 4px #fff;
+    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+    -webkit-transform: scale(.8);
+    -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    transition: transform 0.2s, opacity 0.2s;
+    transform: scale(.8);
+    opacity: 0;
+  }
+  &:before{
+    speak: none;
+    font-size: 48px;
+    line-height: 90px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+  }
+  &:hover{
+    background: rgba(255,255,255,1);
+    color: $color_front_1;
+  }
+  &:hover:after{
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.views-widget-filter-acrostia_link_filter {
+  float: right !important;
+  padding: 0 !important;
+  ul{
+    padding: 0;
+    margin: 0;
+    float: right;
+    li {
+      float: left;
+      background: none;
+      list-style-type: none;
+      a {
+        color: #fff;
+        padding: 5px 10px;
+        margin: 0 10px;
+        display: block;
+        @include border-radius(5px);
+        &:hover, &.active {
+          text-decoration: none;
+          background-color: #f5c149;
+        }
+      }
+    }
+  }
+}
+
+.views-exposed-form {
+  padding: 20px 0 10px;
+  margin: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+  label {
+    text-transform: uppercase;
+    font-size: 1.2em;
+  }
+}
